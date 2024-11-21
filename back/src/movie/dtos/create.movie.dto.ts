@@ -9,7 +9,6 @@ export class CreateMovieDTO {
 
 
 	@ApiProperty({example: 2023, required: true})
-	@Min(1900, {message: "publishing year must be higher 1900"})
 	readonly publishingYear: number
 
 	@ApiProperty({
