@@ -27,7 +27,7 @@ export default function SignIn() {
     }
 
     try {
-      const response = await fetch("http://13.40.190.253:5000/auth/login", {
+      const response = await fetch("http://18.175.253.236:5000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

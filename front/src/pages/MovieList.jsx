@@ -30,7 +30,7 @@ export default function MovieList() {
 
     try {
       const response = await fetch(
-        `http://13.40.190.253:5000/movies?page=${page}&limit=${MOVIES_PER_PAGE}`,
+        `http://18.175.253.236:5000/movies?page=${page}&limit=${MOVIES_PER_PAGE}`,
         {
           method: "GET",
           headers: {
@@ -120,7 +120,7 @@ export default function MovieList() {
             {movies.map((movie) => (
               <MovieCard
                 key={movie.id}
-                imageUrl={`http://13.40.190.253:5000/${movie.poster}`}
+                imageUrl={`http://18.175.253.236:5000/${movie.poster}`}
                 title={movie.title}
                 year={movie.publishingYear}
                 onClick={() => navigate(`/movies/edit`, { state: { movie } })}

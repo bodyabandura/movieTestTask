@@ -1,5 +1,5 @@
 import {ApiProperty} from "@nestjs/swagger";
-import {IsNumber, IsOptional, IsString, Length, Min} from "class-validator";
+import {IsOptional, IsString, Length} from "class-validator";
 
 export class CreateMovieDTO {
 	@ApiProperty({example: "Hungry Games", required: true})

@@ -19,7 +19,7 @@ export default function MovieForm({
   );
   const [poster, setPoster] = useState(movieData.poster || "");
   const [image, setImage] = useState(
-    movieData.poster ? `http://13.40.190.253:5000/${movieData.poster}` : null
+    movieData.poster ? `http://18.175.253.236:5000/${movieData.poster}` : null
   );
 
   const handleDrop = (e) => {
@@ -71,8 +71,8 @@ export default function MovieForm({
       }
 
       const url = isEdit
-        ? `http://13.40.190.253:5000/movies/${movieData._id}`
-        : "http://13.40.190.253:5000/movies";
+        ? `http://18.175.253.236:5000/movies/${movieData._id}`
+        : "http://18.175.253.236:5000/movies";
       const method = isEdit ? "PATCH" : "POST";
 
       const response = await fetch(url, {
