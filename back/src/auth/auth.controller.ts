@@ -11,19 +11,18 @@ import {LoginDTO} from "./dtos/login.dto";
 export class AuthController {
 	constructor(private readonly authService: AuthService) {}
 
-
+	@Post('register')
 	@UsePipes(ValidatorPipes)
 	@ApiOperation({ summary: 'Register a new user' })
 	@ApiResponse({status: 200, type: String})
-	@Post('register')
-	async register(@Body() userDto: CreateUserDTO):Promise<User> {
+	async register(@Body() userDto: CreateUserDTO):Promise<{message: string, userId: string}> {
 		return this.authService.register(userDto);
 	}
 
+	@Post('login')
 	@UsePipes(ValidatorPipes)
 	@ApiOperation({ summary: 'Login a user' })
 	@ApiResponse({status: 200, type: String})
-	@Post('login')
 	async login(@Body() loginDTO: LoginDTO ):Promise<{ accessToken: string }> {
 		return this.authService.login(loginDTO);
 	}

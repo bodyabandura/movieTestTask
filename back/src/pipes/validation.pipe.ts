@@ -14,6 +14,7 @@ export class ValidatorPipes implements PipeTransform<any>{
 			})
 			throw new Exceptions(message)
 		}
+		return obj
 	}
 
 }
