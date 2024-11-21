@@ -3,6 +3,8 @@ import {JwtService} from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import {UserService} from '../user/user.service';
 import {LoginDTO} from "./dtos/login.dto";
+import {CreateUserDTO} from "../user/dtos/user.dto";
+import {User} from "../user/user.model";
 
 @Injectable()
 export class AuthService {
@@ -12,13 +14,13 @@ export class AuthService {
 	) {
 	}
 
-	async register(userDto: any): Promise<any> {
+	async register(userDto: CreateUserDTO): Promise<{message: string, userId: string}> {
 		const existingUser = await this.userService.findByEmail(userDto.email);
 		if (existingUser) {
 			throw new BadRequestException('User with such email already exists');
 		}
 
-		const newUser = await this.userService.create(userDto,);
+		const newUser = await this.userService.create(userDto);
 
 		return {message: 'User registered successfully', userId: newUser.id};
 	}

@@ -8,7 +8,7 @@ import {
 	Delete,
 	UseInterceptors,
 	UploadedFile,
-	UseGuards, Patch
+	UseGuards, Patch, UsePipes
 } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody, ApiParam } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -16,6 +16,7 @@ import { MovieService } from './movie.service';
 import { Movie } from './movie.model';
 import { authGuard } from "../guards/auth.guard";
 import {CreateMovieDTO} from "./dtos/create.movie.dto";
+import {ValidatorPipes} from "../pipes/validation.pipe";
 
 @UseGuards(authGuard)
 @Controller('movies')
@@ -24,6 +25,7 @@ export class MovieController {
 	constructor(private readonly movieService: MovieService) {}
 
 	@Post()
+	@UsePipes(ValidatorPipes)
 	@ApiOperation({ summary: 'Create a new movie' })
 	@ApiResponse({ status: 201, description: 'Movie successfully created', type: Movie })
 	@UseInterceptors(FileInterceptor('poster'))
